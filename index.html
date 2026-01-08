@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聖愛動物醫院 台中南區專業醫療體系 - 30年專業傳承</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0056b3',
+                        'soft-blue': '#F2F8FF',
+                        'secondary-green': '#25D366',
+                        'soft-orange': '#FFF5E6',
+                    },
+                    borderRadius: {
+                        'xl': '12px',
+                        '2xl': '16px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif; }
+        [x-cloak] { display: none !important; }
+
+        /* LINE 浮動按鈕跳動動畫 */
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-bounce-subtle {
+            animation: bounce-subtle 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800" x-data="{ mobileMenu: false }">
+
+    <a href="https://line.me/R/ti/p/@yourid" 
+       class="lg:hidden fixed bottom-8 right-6 z-[60] w-14 h-14 bg-[#06C755] rounded-full shadow-2xl flex items-center justify-center text-white text-3xl animate-bounce-subtle">
+        <i class="fa-brands fa-line"></i>
+    </a>
+
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+        <div class="max-w-[1280px] mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-primary-blue rounded-lg flex items-center justify-center text-white text-xl">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="text-xl font-bold text-gray-900 tracking-tight">
+                    聖愛動物醫院 <span class="text-sm font-normal text-blue-600 block leading-none">台中南區總院</span>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex items-center space-x-2">
+                <a href="#" class="px-3 py-2 text-primary-blue font-bold">首頁</a>
+                
+                <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="px-3 py-2 text-gray-600 group-hover:text-primary-blue font-medium flex items-center transition">
+                        關於聖愛 <i class="fa-solid fa-chevron-down ml-1.5 text-[10px] transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 transform scale-95"
+                         x-transition:enter-end="opacity-100 transform scale-100"
+                         class="absolute left-0 mt-1 w-48 bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden py-2" x-cloak>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">醫師團隊</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">門診價格</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">院所環境</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">聯絡我們</a>
+                    </div>
+                </div>
+
+                <a href="#" class="px-3 py-2 text-gray-600 hover:text-primary-blue font-medium transition">最新消息</a>
+                
+                <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="px-3 py-2 text-gray-600 group-hover:text-primary-blue font-medium flex items-center transition">
+                        診療項目 <i class="fa-solid fa-chevron-down ml-1.5 text-[10px] transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 transform scale-95"
+                         x-transition:enter-end="opacity-100 transform scale-100"
+                         class="absolute left-0 mt-1 w-48 bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden py-2" x-cloak>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">家醫科</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">特寵科</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">骨科</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">外科</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">健康檢查</a>
+                    </div>
+                </div>
+
+               <a href="#" class="px-3 py-2 text-orange-600 hover:text-orange-700 font-bold transition">嚴選商品</a>
+
+                <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="px-3 py-2 text-gray-600 group-hover:text-primary-blue font-medium flex items-center transition">
+                        聖愛專欄 <i class="fa-solid fa-chevron-down ml-1.5 text-[10px] transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 transform scale-95"
+                         x-transition:enter-end="opacity-100 transform scale-100"
+                         class="absolute left-0 mt-1 w-48 bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden py-2" x-cloak>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">狗狗專欄</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">貓咪專欄</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">特寵專欄</a>
+                    </div>
+                </div>
+
+                <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="px-3 py-2 text-gray-600 group-hover:text-primary-blue font-medium flex items-center transition">
+                        案例見證 <i class="fa-solid fa-chevron-down ml-1.5 text-[10px] transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 transform scale-95"
+                         x-transition:enter-end="opacity-100 transform scale-100"
+                         class="absolute left-0 mt-1 w-48 bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden py-2" x-cloak>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">狗狗案例</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">貓咪案例</a>
+                        <a href="#" class="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-blue transition">特寵案例</a>
+                    </div>
+                </div>
+            </nav>
+
+           <div class="flex items-center space-x-2"> <div class="hidden sm:flex items-center space-x-3 text-gray-400 mr-2">
+        <i class="fa-solid fa-cart-shopping cursor-pointer hover:text-primary-blue transition"></i>
+        <i class="fa-solid fa-user cursor-pointer hover:text-primary-blue transition"></i>
+    </div>
+    
+    <a href="https://line.me/R/ti/p/@yourid" class="hidden lg:flex items-center bg-secondary-green text-white px-3 py-1.5 rounded-full font-bold text-xs hover:opacity-90 transition shadow-sm">
+        <i class="fa-brands fa-line mr-1.5 text-base"></i> LINE 諮詢
+    </a>
+    
+    <button class="bg-primary-blue text-white px-3 py-1.5 rounded-full font-bold text-xs hover:bg-blue-700 shadow-md transition">立即預約</button>
+    
+    <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-2xl text-gray-600 pl-2"><i class="fa-solid fa-bars"></i></button>
+</div>
+
+       <div x-show="mobileMenu" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="lg:hidden bg-white border-t border-gray-100 py-4 px-6 space-y-1" x-cloak>
+            
+            <a href="#" class="block py-3 font-bold text-primary-blue">首頁</a>
+            
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex justify-between items-center py-3 text-gray-600 font-medium border-b border-gray-50">
+                    關於聖愛 <i class="fa-solid fa-chevron-down text-[10px] transition-transform" :class="open ? 'rotate-180' : ''"></i>
+                </button>
+                <div x-show="open" class="bg-gray-50 rounded-lg py-2 mt-1">
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">醫師團隊</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">門診價格</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">院所環境</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">聯絡我們</a>
+                </div>
+            </div>
+ <a href="#" class="block py-3 text-gray-600 font-medium border-b border-gray-50">最新消息</a>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex justify-between items-center py-3 text-gray-600 font-medium border-b border-gray-50">
+                    診療項目 <i class="fa-solid fa-chevron-down text-[10px] transition-transform" :class="open ? 'rotate-180' : ''"></i>
+                </button>
+                <div x-show="open" class="bg-gray-50 rounded-lg py-2 mt-1">
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">家醫科</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">特寵科</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">外科/骨科</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">健康檢查</a>
+                </div>
+            </div>
+
+            <a href="#" class="block py-3 text-orange-600 font-bold border-b border-gray-50">嚴選商品</a>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex justify-between items-center py-3 text-gray-600 font-medium border-b border-gray-50">
+                    聖愛專欄 <i class="fa-solid fa-chevron-down text-[10px] transition-transform" :class="open ? 'rotate-180' : ''"></i>
+                </button>
+                <div x-show="open" class="bg-gray-50 rounded-lg py-2 mt-1">
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">狗狗專欄</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">貓咪專欄</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">特寵專欄</a>
+                </div>
+            </div>
+            
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex justify-between items-center py-3 text-gray-600 font-medium border-b border-gray-50">
+                    案例見證 <i class="fa-solid fa-chevron-down text-[10px] transition-transform" :class="open ? 'rotate-180' : ''"></i>
+                </button>
+                <div x-show="open" class="bg-gray-50 rounded-lg py-2 mt-1">
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">狗狗案例</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">貓咪案例</a>
+                    <a href="#" class="block px-6 py-2 text-sm text-gray-600">特寵案例</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-soft-blue overflow-hidden">
+        <div class="max-w-[1280px] mx-auto px-6 py-12 md:py-24 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 space-y-8">
+                <h1 class="text-4xl md:text-6xl font-black leading-tight text-gray-900">
+                    聖愛動物醫院｜<br><span class="text-primary-blue font-bold">台中南區犬貓專科</span><br>30 年專業傳承
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-md">專業標準始終如一，毛孩與飼主都安心。三十年來守護台中毛孩家人的健康。</p>
+            </div>
+            <div class="lg:col-span-6 relative">
+                <div class="bg-white rounded-3xl shadow-2xl p-4 transform rotate-2">
+                    <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1000" class="rounded-2xl w-full h-[450px] object-cover" alt="Sheng Ai Banner">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-blue-50">
+                        <div class="text-3xl font-black text-primary-blue leading-none">30年+</div>
+                        <div class="text-gray-500 text-sm mt-1">台中飼主口碑推薦</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-[1280px] mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-12 items-center mb-20">
+            <div class="lg:col-span-6 relative">
+                <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=1000" class="rounded-2xl shadow-lg w-full" alt="Veterinarian with pet">
+                <div class="absolute -top-6 -right-6 w-28 h-28 bg-blue-600 rounded-full flex items-center justify-center text-white text-center p-4 font-bold text-sm leading-tight rotate-12 shadow-xl">
+                    二代獸醫<br>專業接力
+                </div>
+            </div>
+            <div class="lg:col-span-6 space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">專業標準始終如一，<br>毛孩與飼主都安心。</h2>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    聖愛動物醫院深耕台中南區超過三十年，由第一代獸醫師創立，並由第二代接力延續專業精神與醫療標準。我們陪伴飼主解決過各種寵物醫療問題。讓您放心、毛孩安心，就是聖愛不變的堅持。
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-100 hover:bg-white hover:shadow-xl transition duration-300">
+                <i class="fa-solid fa-medal text-4xl text-blue-600 mb-6 block"></i>
+                <h3 class="font-bold text-xl text-gray-900 mb-4">30年在地經營</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    自 1990 年代起，聖愛已守護台中南區無數家庭。代表的不僅是醫療技術，更是與飼主間建立的信任。
+                </p>
+            </div>
+            <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-100 hover:bg-white hover:shadow-xl transition duration-300">
+                <i class="fa-solid fa-stethoscope text-4xl text-blue-600 mb-6 block"></i>
+                <h3 class="font-bold text-xl text-gray-900 mb-4">二代專業傳承</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    傳承自創辦醫師嚴謹初衷，由第二代團隊注入現代化設備與最新醫學觀念。
+                </p>
+            </div>
+            <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-100 hover:bg-white hover:shadow-xl transition duration-300">
+                <i class="fa-solid fa-heart-pulse text-4xl text-blue-600 mb-6 block"></i>
+                <h3 class="font-bold text-xl text-gray-900 mb-4">安心透明流程</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    我們堅持診斷透明、收費公開。無論健檢或手術，皆秉持同理心讓飼主清楚掌握進度。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50 text-center">
+        <div class="max-w-[1280px] mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">毛孩的醫療需求，在聖愛得到完整照護</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-house-chimney-medical text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">家醫科</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">疫苗接種、晶片植入、一般疾病診斷與日常照護。</p>
+                </div>
+
+                <div class="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-scissors text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">外科</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">專業結紮手術、及各類精密手術。</p>
+                </div>
+
+                <div class="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-bone text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">骨科</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">處理關節退化、骨折修復、跛行等運動系統問題。</p>
+                </div>
+
+                <div class="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-tooth text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">牙科</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">超音波洗牙、牙周治療，守護毛孩口腔健康。</p>
+                </div>
+
+                <div class="group bg-orange-50/30 p-8 rounded-2xl border border-orange-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-orange-100 text-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-rabbit text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">特寵科</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">熟悉兔、鼠、鳥等特殊寵物的診療。</p>
+                </div>
+
+                <div class="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-clipboard-check text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">健康檢查</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">X 光、血檢、超音波，精準數據分析預防疾病。</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button class="w-full sm:w-auto bg-primary-blue text-white px-10 py-4 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition">立即預約看診</button>
+                <button class="w-full sm:w-auto bg-white text-primary-blue border-2 border-primary-blue px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition">了解更多服務</button>
+            </div>
+        </div>
+    </section>
+<section class="py-32 bg-soft-orange">
+        <div class="max-w-[1280px] mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-4xl font-bold text-orange-900">獸醫嚴選 毛孩的日常照護</h2>
+                <p class="text-orange-700">聖愛只推薦經臨床驗證，適合毛孩體質的處方與營養方案。</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-orange-400">
+                    <div class="aspect-square bg-orange-50 rounded-xl mb-6 flex items-center justify-center text-6xl text-orange-200">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">專業處方飼料</h3>
+                    <p class="text-gray-500 mb-6">適合具疾病與特殊需求的機能性處方糧。</p>
+                    <button class="w-full py-4 bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 shadow-lg transition">進入選購</button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-orange-400">
+                    <div class="aspect-square bg-orange-50 rounded-xl mb-6 flex items-center justify-center text-6xl text-orange-200">
+                        <i class="fa-solid fa-vial-circle-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">犬貓營養保健</h3>
+                    <p class="text-gray-500 mb-6">由獸醫把關的保健品，強化毛孩日常健康</p>
+                    <button class="w-full py-4 bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 shadow-lg transition">查看更多</button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-orange-400">
+                    <div class="aspect-square bg-orange-50 rounded-xl mb-6 flex items-center justify-center text-6xl text-orange-200">
+                        <i class="fa-solid fa-box-tissue"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">特別護理</h3>
+                    <p class="text-gray-500 mb-6">支援術後、慢性病與需要額外照護的毛孩</p>
+                    <button class="w-full py-4 bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 shadow-lg transition">了解使用</button>
+                </div>
+            </div>
+        </div>
+
+   <section class="py-24 bg-white">
+    <div class="max-w-[1280px] mx-auto px-6">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h3 class="text-3xl font-bold border-l-8 border-blue-600 pl-4 uppercase tracking-tighter">案例見證</h3>
+                <p class="text-gray-500 mt-2 ml-4 text-sm font-medium">真實醫療案例分享，見證毛孩重習健康</p>
+            </div>
+            <a href="#" class="text-blue-600 font-bold hover:underline">查看全部 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-2xl mb-4 h-48">
+                    <img src="https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Case 1">
+                </div>
+                <span class="text-blue-500 text-xs font-bold uppercase">狗狗皮膚專科</span>
+                <h4 class="text-xl font-bold group-hover:text-blue-700 mt-2 line-clamp-1">兩年過敏抓癢噩夢告終</h4>
+                <p class="text-gray-500 text-sm mt-2 line-clamp-2">透過過敏原測試與二代獸醫整合方案，我們成功為毛孩找到根本原因...</p>
+            </div>
+
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-2xl mb-4 h-48">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Case 2">
+                </div>
+                <span class="text-blue-500 text-xs font-bold uppercase">老貓慢病管理</span>
+                <h4 class="text-xl font-bold group-hover:text-blue-700 mt-2 line-clamp-1">15 歲腎貓的優質晚年</h4>
+                <p class="text-gray-500 text-sm mt-2 line-clamp-2">維持食慾與生活品質的關鍵在於細緻的居家管理與回診追蹤...</p>
+            </div>
+
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-2xl mb-4 h-48">
+                    <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Case 4">
+                </div>
+                <span class="text-blue-500 text-xs font-bold uppercase">特寵診療</span>
+                <h4 class="text-xl font-bold group-hover:text-blue-700 mt-2 line-clamp-1">玄鳳鸚鵡呼吸道感染康復紀錄</h4>
+                <p class="text-gray-500 text-sm mt-2 line-clamp-2">對於體型嬌小的鳥類，精準的藥物計量與環境控制是復原關鍵...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="py-24 bg-gray-50">
+    <div class="max-w-[1280px] mx-auto px-6">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h3 class="text-3xl font-bold border-l-8 border-green-500 pl-4 uppercase tracking-tighter">聖愛專欄</h3>
+                <p class="text-gray-500 mt-2 ml-4 text-sm font-medium">獸醫團隊親自撰寫，最專業的日常衛教知識</p>
+            </div>
+            <a href="#" class="text-green-600 font-bold hover:underline">更多文章 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:border-green-200 transition shadow-sm flex flex-col h-full">
+                <h4 class="text-xl font-bold text-gray-800 line-clamp-2">換季抓癢抓不停？五個常見皮膚過敏原</h4>
+                <p class="text-gray-500 text-sm mt-4 flex-grow line-clamp-3">許多飼主誤以為換飼料就能改善，其實環境因素佔了很大比重，包括塵蟎與花粉...</p>
+                <a href="#" class="inline-block mt-6 text-green-600 font-bold text-sm text-right">閱讀文章 →</a>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:border-green-200 transition shadow-sm flex flex-col h-full">
+                <h4 class="text-xl font-bold text-gray-800 line-clamp-2">【特寵知識】兔子不吃草？致命的「GI 腸胃停滯」</h4>
+                <p class="text-gray-500 text-sm mt-4 flex-grow line-clamp-3">特寵的急診往往就在不經意間，學會觀察糞便與食慾的細微變化...</p>
+                <a href="#" class="inline-block mt-6 text-green-600 font-bold text-sm text-right">閱讀文章 →</a>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:border-green-200 transition shadow-sm flex flex-col h-full">
+                <h4 class="text-xl font-bold text-gray-800 line-clamp-2">貓流眼淚代表什麼？是身體不舒服嗎？</h4>
+                <p class="text-gray-500 text-sm mt-4 flex-grow line-clamp-3">家裡的貓咪為什麼會流眼淚？主要原因有三個，「鼻淚管阻塞」、「眼睛外傷或疾病」...</p>
+                <a href="#" class="inline-block mt-6 text-green-600 font-bold text-sm text-right">閱讀文章 →</a>
+            </div>
+
+            </div> </div>
+</section>
+
+    <footer class="bg-slate-900 text-white pt-20 pb-10">
+        <div class="max-w-[1280px] mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+                <div class="md:col-span-5 space-y-6">
+                    <h2 class="text-2xl font-bold">聖愛動物醫院｜台中南區復興總院</h2>
+                    <p class="text-slate-400 leading-relaxed max-w-sm">30 年專業傳承，跨世代接力守護。我們提供全方位的醫療服務，並以最誠摯的心陪伴您的毛孩家人。</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-green-600 transition"><i class="fa-brands fa-line"></i></a>
+                    </div>
+                </div>
+                <div class="md:col-span-4 space-y-4 text-slate-300">
+                    <h4 class="text-white font-bold mb-6 underline underline-offset-8 decoration-blue-500">聯繫與時段</h4>
+                    <p><i class="fa-solid fa-location-dot mr-3 text-blue-500"></i> 台中市南區復興路一段 405 號</p>
+                    <p><i class="fa-solid fa-phone mr-3 text-blue-500"></i> 04-2261-9245</p>
+                    <p><i class="fa-solid fa-clock mr-3 text-blue-500"></i> 週一至週六 09:00 - 21:00 (週日休診)</p>
+                </div>
+                <div class="md:col-span-3 space-y-4 text-slate-300 text-sm">
+                    <h4 class="text-white font-bold mb-6 underline underline-offset-8 decoration-blue-500">快速連結</h4>
+                    <a href="#" class="block hover:text-white transition">關於聖愛獸醫團隊</a>
+                    <a href="#" class="block hover:text-white transition">商城會員權益</a>
+                    <a href="#" class="block hover:text-white transition">常見Q&A</a>
+                    <a href="#" class="block hover:text-white transition">隱私權政策</a>
+                </div>
+            </div>
+            <div class="pt-8 text-center text-slate-500 text-xs italic tracking-widest uppercase">
+                &copy; 2024 SHENG-AI ANIMAL HOSPITAL. ALL RIGHTS RESERVED. "專業傳承，毛孩最安心"
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
